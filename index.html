@@ -2,19 +2,9 @@
 <html>
 
 <head>
-  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="UTF-8" />
   <title></title>
-  <style>
-    body {
-      margin: 0;
-    }
-
-    canvas {
-      display: block;
-    }
-  </style>
-      <script src="/timedTriviaExplosion/assets/js/three.js"></script>
-      <script src="/timedTriviaExplosion/assets/js/OrbitControls.js"></script>
 </head>
 
 <body>
@@ -23,6 +13,11 @@
     <input type="radio" name="Question 1" value="true" checked />True<br />
     <input type="radio" name="Quesstion 2" value="false" />False<br />
   </form>
+  <div id="scene-container">
+    <!-- This div will hold our scene-->
+  </div>
+  <script src="./assets/js/three.js"></script>
+  <script src="./assets/js/OrbitControls.js"></script>
   <script src="./assets/js/app.js"></script>
 </body>
 
