@@ -1,27 +1,93 @@
+<!--https://github.com/Semantic-Org/Semantic-UI
+recommend fontawesome-->
+
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=
-    , initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="assets/css/reset.css">
-    <link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css">
-    <link rel="stylesheet" href="assets/css/styles.css">
-    
-    <title>Timed Trivia Explosion!</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Trivia Explosion</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <script defer src="../timedTriviaExplosion/assets/js/three.js"></script>
+    <script defer src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="../timedTriviaExplosion/assets/js/scripts.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+
 </head>
+
+<style>
+
+    .center {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        /* padding: 0rem; */
+    }
+
+    .left {
+        display: flex;
+        justify-content: left;
+        align-items: center;
+    }
+
+    .title {
+        font-size: 2.5rem;
+        font-family: fantasy;
+        color: rgb(75, 4, 107);
+        background: rgb(105, 179, 228);
+    }
+
+    .question {
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        font-family: cursive;
+        color: rgb(14, 13, 13);
+        background-color: rgb(161, 248, 165);
+    }
+
+</style>
+
 <body>
-
-    
-
-    <script src="assets/js/scripts.js"></script>
-    <script src="moment.js"></script>
-    <script src="js/three.js"></script>
-    <script
-    src="https://code.jquery.com/jquery-3.1.1.min.js"
-    integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
-    crossorigin="anonymous"></script>
-  <script src="semantic/dist/semantic.min.js"></script>
+    <section class="hero">
+        <div class="hero-body is-paddingless">
+            <div class="container center title">
+                <h1 class="title">
+                    Timed Trivia Explosion
+                </h1>
+            </div>
+        </div>
+    </section>
+    <section class="section has-background-light is-paddingless">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-half left">
+                    <div class="notification question is-size-4">
+                        TODO - How to Code Question from API adding this to see what looks like with wrap
+                    </div>
+                </div>
+                <div class="column is-one-quarter center">
+                    <div class="notification question is-size-4">
+                        <label class="radio">
+                            <input type="radio" name="answer">
+                            True
+                        </label>
+                        <label class="radio">
+                            <input type="radio" name="answer">
+                            False
+                        </label>
+                    </div>
+                </div>
+                <div class="column is-one-quarter center">
+                    <div class="notification question is-size-4">
+                        This could be the timer space
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 </body>
+
 </html>
