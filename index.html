@@ -22,14 +22,26 @@ recommend fontawesome-->
     .center {
         justify-content: center;
         align-items: center;
-        margin-bottom: 2rem;
-        text-align: center;
+        text-align: center;        
     }
 
     .title {
-        font-family: fantasy;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
         color: rgb(13, 11, 14);
-        background: white);
+        background: white;
+        margin-bottom: .5rem;
+    }
+
+    .score {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        font-family: cursive;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        padding: 1.5rem;
+        color: rgb(14, 13, 13);
+        background-color: rgb(153, 81, 153);
+        border-radius: .75rem;
+        text-align: center;
     }
 
     .question {
@@ -79,7 +91,12 @@ recommend fontawesome-->
             <div class="tile center hourglass is-size-3 has-background-warning has-text-black">
                 <img title=" TIMER-SPACE" class="hourglass">
             </div>
-            <div class="tile center question has-background-info">
+            <article class="message">
+                <div class="message-header has-background-white is-large center is-size-4">
+                  <p class="words score">SCORE</p>
+                </div>
+              </article>
+            <div class="tile center question has-background-info center">
                 <p class="words is-size-4">
                     The earth is flat and Treighton is a bad teacher and Alan has blonde hair and Chris is really loud
                 </p>
