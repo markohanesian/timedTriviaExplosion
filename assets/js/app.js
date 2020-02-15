@@ -9,7 +9,7 @@ function init() {
 
   // background color
   scene = new THREE.Scene();
-  scene.background = new THREE.Color(0xffffff);
+  scene.background = new THREE.Color(0x4821d5);
 
   createCamera();
   createControls();
@@ -38,7 +38,6 @@ function createControls() {
 }
 
 function createLights() {
-  // hourglass color
   const ambientLight = new THREE.HemisphereLight(0xddeeff, 0x0f0e0d, 5);
 
   const mainLight = new THREE.DirectionalLight(0xffffff, 5);
@@ -56,7 +55,8 @@ function createMaterials() {
   hourglass.color.convertSRGBToLinear();
 
   const detail = new THREE.MeshStandardMaterial({
-    color: 0xd3bea5, 
+      // hourglass color
+    color: 0xffffff, 
     flatShading: false
   });
 
@@ -82,7 +82,6 @@ function createGeometries() {
     bottom
   };
 }
-
 
 function rotateHourglass() {
   var SPEED = 0.01;

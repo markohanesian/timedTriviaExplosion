@@ -1,3 +1,32 @@
+// button java
+var status = "is-hidden"
+document.getElementById('button1').onclick = function(event) {
+	document.getElementById('scene-container').className = status;
+	if(status === "is-hidden"){
+		status = "show";	
+	}else{
+		status = "is-hidden";
+	}
+ }
+
+var status = "is-hidden"
+document.getElementById('button2').onclick = function(event) {
+	document.getElementById('spinglass').className = status;
+	if(status === "is-hidden"){
+		status = "show";	
+	}else{
+		status = "is-hidden";
+	}
+ }
+
+//Moment time stuff goes below here
+var back30Days=moment().subtract(30, 'days').format("dddd, MMMM Do YYYY, h:mm:ss p");
+
+console.log('back30Days --> ' + back30Days);
+
+
+
+// WebGL Is below Here//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /**
  * @author alteredq / http://alteredqualia.com/
  * @author mr.doob / http://mrdoob.com/
@@ -95,4 +124,4 @@ var WEBGL = {
 
 };
 
-export { WEBGL };
+//export { WEBGL };
