@@ -39,18 +39,23 @@ recommend fontawesome-->
         font-family: cursive;
         color: rgb(14, 13, 13);
         background-color: rgb(170, 253, 174);
+        border-radius: 1rem;
     }
 
     .hourglass {
-        padding: 1rem 0 1rem 0;
+        padding: 1rem;
         font-family: Verdana, Geneva, Tahoma, sans-serif;
-        background: grey;
+        border-radius: 1rem;
     }
 
+    .others {
+        padding: 1rem;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        border-radius: 1rem;
+    }
     .start {
         font-family: fantasy;
-        color: cornsilk;
-        background-color: rgb(139, 0, 81);
+        border-radius: 1rem;
     }
     
 </style>
@@ -71,15 +76,15 @@ recommend fontawesome-->
                 <!--this is a place holder column-->
         </div>
         <div class="column is-4">
-            <div class="tile center hourglass is-size-3 has-text-white">
-                <img title=" TIMER" class="hourglass">
+            <div class="tile center hourglass is-size-3 has-background-warning has-text-black">
+                <img title=" TIMER-SPACE" class="hourglass">
             </div>
-            <div class="tile center question">
+            <div class="tile center question has-background-info">
                 <p class="words is-size-4">
                     The earth is flat and Treighton is a bad teacher and Alan has blonde hair and Chris is really loud
                 </p>
             </div>
-            <div class="tile center question">
+            <div class="tile center question has-background-info">
                 <div class="control">
                     <label class="radio is-size-4">
                       <input type="radio" name="answer">
@@ -92,14 +97,12 @@ recommend fontawesome-->
                   </div>
             </div>
         </div>
-        <div class="column is-1">
-            <div class="tile center hourglass is-size-1 has-text-white">
+        <div class="column is-3">
+            <div class="tile center hourglass is-size-1 has-background-black has-text-white">
                 <img title="HOUR- GLASS" class="hourglass">                
             </div>            
-        </div>
-        <div class="column is-1">
-            <div class="tile center hourglass is-size-1 has-background-danger has-text-white">
-                <img title="START" class="hourglass">
+            <div class="tile center others is-size-1">
+               <button class="button is-danger is-large">START</button>
             </div>
         </div>
     </div>
