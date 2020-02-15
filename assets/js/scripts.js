@@ -1,4 +1,4 @@
-
+var allQuestions = [];
 
 function questionDisplay() {
   var queryURL = "https://opentdb.com/api.php?amount=50&type=boolean";
@@ -7,20 +7,69 @@ function questionDisplay() {
     url: queryURL,
     method: "GET"
   }).then(function(response) {
-    //setting variable response
-    var response = response.results[0];
+    //stores all the questions from the AJAX request
+    // var response = response.results[0];
+    console.log(response)
+    //loops through each question
+    for (var i = 0; i < response.results.length; i++) {
+        var current_question = response.results[i];
+        console.log(current_question);
+      //creates div to hold question text
+      var questionDiv = $("<div class='question'>");
+      
+      //just stores the question data
+      var respQues = current_question.question;
 
-    var questionRender = `
-        <div class="questions is-size-1" id="question">${response.question}</div>
-        <div class="button is-size-3" id="button-A">${response.correct_answer}</div>
-        <div class="button is-size-3" id="button-B">${response.incorrect_answers}</div>`;
- 
+      //creates element to display question text
+      var qTextDisplay = $("<p class='ques is-size-1'>").text(respQues);
 
-    $("#quiz-ques").append(questionRender);
+      //Display the question text
+      questionDiv.append(qTextDisplay);
+
+      //stores the answer data
+      var respAnsOne = current_question.correct_answer;
+      var respAnsTwo = current_question.incorrect_answers;
+
+      //displays the answer text for correct and incorrect answer
+      var answerOneDisplay = $("<p class='button'>").text(respAnsOne);
+      var answerTwoDisplay = $("<p class='button'>").text(respAnsTwo);
+
+      
+      questionDiv.append(answerOneDisplay);
+      questionDiv.append(answerTwoDisplay);
+      
+      $("#quiz-container").prepend(questionDiv);
+      return;
+    }
   });
   timerCount();
 }
 
+// function renderButtons() {
+//   $("answer-area").empty();
+
+//   for (var i = 0; i < allQuestions.length; i++) {
+//     var a = $("<button>");
+
+//     a.addClass("quesArray-btn");
+
+//     a.attr("data-name", allQuestions[i]);
+
+//     a.text(allQuestions[i]);
+
+//     $("#answer-area").append(a);
+//   }
+
+// }
+
+$(".button").on("click", function(event) {
+    // event.preventDefault();
+    questionDisplay();
+    startButton();
+    timerCount();
+});
+
+//function for the moment timer
 function timerCount() {
   var duration = moment.duration({
     minutes: 01,
@@ -49,15 +98,6 @@ function timerCount() {
   }, 1000);
 }
 
-$("#start-button").on("click", function(e) {
-  questionDisplay();
-  startButton();
-  timerCount();
-});
-
-$("#button-A").on("click", function(e) {
-    questionDisplay();
-})
 
 function startButton() {
   if (questionDisplay) {
@@ -75,23 +115,29 @@ function checkAnswers() {
     //setting variable response
     var response = response.results[0];
 
-    // if (true === correct_answer || false === correct_answer) {
-    //   timerCount++;
-    // } else {
-        //false === incorrect_answers || true === incorrect_answers
-    //   timerCount--;
-    // }
-    // if (response.length - 1) {
-    //   endQuiz();
-    //   return;
-    // }
-    // var questionRender = `
-    // <div class="questions is-size-1" id="question">${response.question}</div>
-    // <div class="button is-size-3" id="button">${response.correct_answer}</div>
-    // <div class="button is-size-3" id="button">${response.incorrect_answers}</div>`
+    var questionRender = `
+          <div class="questions is-size-1" id="question">${response.question}</div>
+          <div class="button is-size-3" id="button-A">${response.correct_answer}</div>
+          <div class="button is-size-3" id="button-B">${response.incorrect_answers}</div>`;
 
-    // $("#quiz-ques").html(questionRender)
-    // checkAnswers(response)
+    $("#quiz-ques").html(questionRender);
   });
-}
 
+  // if (true === correct_answer || false === correct_answer) {
+  //   timerCount++;
+  // } else {
+  //false === incorrect_answers || true === incorrect_answers
+  //   timerCount--;
+  // }
+  // if (response.length - 1) {
+  //   endQuiz();
+  //   return;
+  // }
+  // var questionRender = `
+  // <div class="questions is-size-1" id="question">${response.question}</div>
+  // <div class="button is-size-3" id="button">${response.correct_answer}</div>
+  // <div class="button is-size-3" id="button">${response.incorrect_answers}</div>`
+
+  // $("#quiz-ques").html(questionRender)
+  // checkAnswers(response)
+}
