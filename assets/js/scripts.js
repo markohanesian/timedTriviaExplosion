@@ -1,124 +1,143 @@
- var score = 0;
+var allQuestions = [];
 
-const startButton = document.getElementById('start-btn')
-const questionElement = document.getElementById('question')
-const highScore = document.getElementById('highScore-btn')
+function questionDisplay() {
+  var queryURL = "https://opentdb.com/api.php?amount=50&type=boolean";
 
-var answerBool = document.getElementById('tOrF')
+  $.ajax({
+    url: queryURL,
+    method: "GET"
+  }).then(function(response) {
+    //stores all the questions from the AJAX request
+    // var response = response.results[0];
+    console.log(response)
+    //loops through each question
+    for (var i = 0; i < response.results.length; i++) {
+        var current_question = response.results[i];
+        console.log(current_question);
+      //creates div to hold question text
+      var questionDiv = $("<div class='question'>");
+      
+      //just stores the question data
+      var respQues = current_question.question;
 
-startButton.addEventListener('click', startClock)
-answerBool.addEventListener('click', answerTF)
- 
- //run this function while there is time on the clock
-function play() {
-    var timeEl = document.querySelector("time");
-    var secondsLeft = 60;
-       
-    //TODO find code error
-    function setTime() {
-        var timerInterval = setInterval(
-            function() {
-                secondsLeft--;
-                timeEl.textContent = secondsLeft ;
-        
-                if(secondsLeft === 0) {
-                clearInterval(timerInterval);
-                noTimeLeft();
-            }
-        }
-        , 1000);
+      //creates element to display question text
+      var qTextDisplay = $("<p class='ques is-size-1'>").text(respQues);
+
+      //Display the question text
+      questionDiv.append(qTextDisplay);
+
+      //stores the answer data
+      var respAnsOne = current_question.correct_answer;
+      var respAnsTwo = current_question.incorrect_answers;
+
+      //displays the answer text for correct and incorrect answer
+      var answerOneDisplay = $("<p class='button'>").text(respAnsOne);
+      var answerTwoDisplay = $("<p class='button'>").text(respAnsTwo);
+
+      
+      questionDiv.append(answerOneDisplay);
+      questionDiv.append(answerTwoDisplay);
+      
+      $("#quiz-container").prepend(questionDiv);
+      return;
     }
-    
-    nextQuestion()
+  });
+  timerCount();
 }
 
+// function renderButtons() {
+//   $("answer-area").empty();
 
+//   for (var i = 0; i < allQuestions.length; i++) {
+//     var a = $("<button>");
 
- //check if anwer is correct
-    if (questions[current].choices[answerChoice] === questions[current].answer) {
-        score++;
-    }
-    nextQuestion()
-    }
+//     a.addClass("quesArray-btn");
 
-function nextQuestion() {
-    
-//Get next question
-    
-        questionElement.innerText = questions[current].title;
-        answerA.innerText = questions[current].choices[0];
-        answerB.innerText = questions[current].choices[1];
-        current++;
-    }
-    else {
-        noQuestions()
-}
-}
+//     a.attr("data-name", allQuestions[i]);
 
+//     a.text(allQuestions[i]);
 
-function noQuestions() {
-//if answer all questions, show you won, the score
-//then take them to the screen to put in their initials
-//store initials with the score in the LocalStorate
-}
+//     $("#answer-area").append(a);
+//   }
 
-function noTimeLeft() {
-//if time runs out, then the person has lost, tell them so
-}
-
-
-
-//--------------------------------------------------------
-//this function puts up the first question
-function startGame() {
-console.log('Started')
-startButton.classList.add('hide') //this was not working
-currentQuestionIndex = 0
-questionContainerElement.classList.remove('hide')
-setNextQuestion()
-}
-
-function setNextQuestion() {
-//test to see if there is a next question, if not go to WIN funciton
-//if there is a new question, pull it and go to showQuestions
-}
-
-// function showQuestions(question) {
-//     questionElement.innerText = question.question
-//     question.answers.forEach(answer => {
-//         const button = document.createElement('button')
-//         button.innerText = answer.text
-//         button.classList.add('btn')
-//         if (answer.correct) {
-//             button.dataset.correct = answer.correct
-//         }
-//         button.addEventListener('click', selectAnswer)
-//         answerButtonsElement.appendChild(button)
-//     });
 // }
 
-//-----------------------------------------------------------
+$(".button").on("click", function(event) {
+    // event.preventDefault();
+    questionDisplay();
+    startButton();
+    timerCount();
+});
+
+//function for the moment timer
+function timerCount() {
+  var duration = moment.duration({
+    minutes: 01,
+    seconds: 00
+  });
+
+  var timestamp = new Date(0, 0, 0, 2, 10, 30);
+  var interval = 1;
+  var timer = setInterval(function() {
+    timestamp = new Date(timestamp.getTime() + interval * 1000);
+
+    duration = moment.duration(duration.asSeconds() - interval, "seconds");
+    var min = duration.minutes();
+    var sec = duration.seconds();
+
+    sec -= 1;
+    if (min < 0) return clearInterval(timer);
+    if (min < 10 && min.length != 2) min = "0" + min;
+    if (sec < 0 && min != 0) {
+      min -= 1;
+      sec = 59;
+    } else if (sec < 10 && sec.length != 2) sec = "0" + sec;
+
+    $(".countdown").text(min + ":" + sec);
+    if (min == 0 && sec == 0) clearInterval(timer);
+  }, 1000);
+}
 
 
-//     function displayMessage(type, message) {
-//     msgDiv.textContent = message;
-//     msgDiv.setAttribute("class", type);
-//     }
+function startButton() {
+  if (questionDisplay) {
+    $("#start-area").hide();
+  }
+}
 
-// signUpButton.addEventListener("click", function(event) {
-// event.preventDefault();
+function checkAnswers() {
+  var queryURL = "https://opentdb.com/api.php?amount=50&type=boolean";
 
+  $.ajax({
+    url: queryURL,
+    method: "GET"
+  }).then(function(response) {
+    //setting variable response
+    var response = response.results[0];
 
+    var questionRender = `
+          <div class="questions is-size-1" id="question">${response.question}</div>
+          <div class="button is-size-3" id="button-A">${response.correct_answer}</div>
+          <div class="button is-size-3" id="button-B">${response.incorrect_answers}</div>`;
 
-//Are We Saving Scores?
-//         // set new submission
-//         localStorage.setItem("user", JSON.stringify(user));
-    
-//         // get most recent submission
-//         var lastUser = JSON.parse(localStorage.getItem("user"));
-//         userFirstNameSpan.textContent = lastUser.firstName;
-//         userLastNameSpan.textContent = lastUser.lastName;
-//         userEmailSpan.textContent = lastUser.email;
-//         userPasswordSpan.textContent = lastUser.password;
-//     }
-// });
+    $("#quiz-ques").html(questionRender);
+  });
+
+  // if (true === correct_answer || false === correct_answer) {
+  //   timerCount++;
+  // } else {
+  //false === incorrect_answers || true === incorrect_answers
+  //   timerCount--;
+  // }
+  // if (response.length - 1) {
+  //   endQuiz();
+  //   return;
+  // }
+  // var questionRender = `
+  // <div class="questions is-size-1" id="question">${response.question}</div>
+  // <div class="button is-size-3" id="button">${response.correct_answer}</div>
+  // <div class="button is-size-3" id="button">${response.incorrect_answers}</div>`
+
+  // $("#quiz-ques").html(questionRender)
+  // checkAnswers(response)
+}
