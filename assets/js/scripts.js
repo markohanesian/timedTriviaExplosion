@@ -1,27 +1,8 @@
-// button java
-var status = "is-hidden"
-document.getElementById('button1').onclick = function(event) {
-	document.getElementById('scene-container').className = status;
-	if(status === "is-hidden"){
-		status = "show";	
-	}else{
-		status = "is-hidden";
-	}
- }
-
-var status = "is-hidden"
-document.getElementById('button2').onclick = function(event) {
-	document.getElementById('spinglass').className = status;
-	if(status === "is-hidden"){
-		status = "show";	
-	}else{
-		status = "is-hidden";
-	}
- }
-
-
 var allQuestions = [];
+var answerCorrect;
+var answerWrong;
 
+// pulls all 50 trivia questions from opentdb API
 function questionDisplay() {
   var queryURL = "https://opentdb.com/api.php?amount=50&type=boolean";
 
@@ -29,9 +10,11 @@ function questionDisplay() {
     url: queryURL,
     method: "GET"
   }).then(function(response) {
-    //stores all the questions from the AJAX request
-    // var response = response.results[0];
-    console.log(response)
+
+    allQuestions = response;
+    answerCorrect = respAnsOne;
+    answerWrong = respAnsTwo;
+    
     //loops through each question
     for (var i = 0; i < response.results.length; i++) {
         var current_question = response.results[i];
@@ -51,45 +34,32 @@ function questionDisplay() {
       //stores the answer data
       var respAnsOne = current_question.correct_answer;
       var respAnsTwo = current_question.incorrect_answers;
-
+    
       //displays the answer text for correct and incorrect answer
-      var answerOneDisplay = $("<p class='button'>").text(respAnsOne);
-      var answerTwoDisplay = $("<p class='button'>").text(respAnsTwo);
+      var answerTrue = $("<p class='button'>").text(respAnsOne);
+      var answerFalse = $("<p class='button'>").text(respAnsTwo);
 
+      //appends the
+      questionDiv.append(answerTrue);
+      questionDiv.append(answerFalse);
       
-      questionDiv.append(answerOneDisplay);
-      questionDiv.append(answerTwoDisplay);
-      
-      $("#quiz-container").prepend(questionDiv);
+      $("#quiz-container").html(questionDiv);
       return;
     }
   });
-  timerCount();
 }
 
-// function renderButtons() {
-//   $("answer-area").empty();
-
-//   for (var i = 0; i < allQuestions.length; i++) {
-//     var a = $("<button>");
-
-//     a.addClass("quesArray-btn");
-
-//     a.attr("data-name", allQuestions[i]);
-
-//     a.text(allQuestions[i]);
-
-//     $("#answer-area").append(a);
-//   }
-
-// }
-
-$(".button").on("click", function(event) {
-    // event.preventDefault();
+// on start button click, questions are displayed, timer starts, then start button disappears
+$("#start-button").on("click", function(event) {
+    event.preventDefault();
+  
     questionDisplay();
     startButton();
     timerCount();
 });
+
+// activates buttons to display questions
+$(document).on("click", ".button", questionDisplay);
 
 //function for the moment timer
 function timerCount() {
@@ -120,51 +90,22 @@ function timerCount() {
   }, 1000);
 }
 
-
+// hides start button
 function startButton() {
   if (questionDisplay) {
     $("#start-area").hide();
   }
 }
 
+// checks if answers are correct or incorrect, adds/subtracts time on timer accordingly
 function checkAnswers() {
-  var queryURL = "https://opentdb.com/api.php?amount=50&type=boolean";
-
-  $.ajax({
-    url: queryURL,
-    method: "GET"
-  }).then(function(response) {
-    //setting variable response
-    var response = response.results[0];
-
-    var questionRender = `
-          <div class="questions is-size-1" id="question">${response.question}</div>
-          <div class="button is-size-3" id="button-A">${response.correct_answer}</div>
-          <div class="button is-size-3" id="button-B">${response.incorrect_answers}</div>`;
-
-    $("#quiz-ques").html(questionRender);
-  });
-
-  // if (true === correct_answer || false === correct_answer) {
-  //   timerCount++;
-  // } else {
-  //false === incorrect_answers || true === incorrect_answers
-  //   timerCount--;
-  // }
-  // if (response.length - 1) {
-  //   endQuiz();
-  //   return;
-  // }
-  // var questionRender = `
-  // <div class="questions is-size-1" id="question">${response.question}</div>
-  // <div class="button is-size-3" id="button">${response.correct_answer}</div>
-  // <div class="button is-size-3" id="button">${response.incorrect_answers}</div>`
-
-  // $("#quiz-ques").html(questionRender)
-  // checkAnswers(response)
+  if (answerCorrect === "true" || answerCorrect === "false") {
+    console.log(answerCorrect)
+    timerCount += 5 
+  } else {
+    timerCount -= 5
+  }
 }
-
-
 
 var WEBGL = {
 

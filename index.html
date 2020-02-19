@@ -5,15 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta charset="UTF-8" />
   <title>Timed Trivia Explosion Model</title>
+  <link rel="stylesheet" href="assets/css/styles.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
   <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
-  <style>
-    .center {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-  </style>
+  
 </head>
 
 <body>
@@ -21,31 +16,27 @@
   <section class="hero is-warning">
     <div class="hero-body">
       <div class="container has-text-centered">
-        <h1 class="title is-1">Timed Trivia Explosion</h1>
+        <h1 class="title is-1">Timed Trivia Explosion!</h1>
       </div>
     </div>
   </section>
-  <!-- Middle section = 2 columns -->        
+  <!-- Middle section = 2 columns -->
   <nav class="level">
     <div class="level-item has-text-centered">
       <div class="container" id="start-area">
-        <h1>Timed Trivia Explosion!</h1>
-        <div class="button is-size-1" id="start-button">START
+        <div class="is-size-1" id="start-button">START
         </div>
       </div>
-        
+
       <!--container with quiz questions-->
       <div class="container" id="quiz-container">
-        <!-- <div class="questions is-size-1" id="question"> -->
-        </div>
-       <div class="answer-area" id="answer-area">
-       </div>
-    </div>  
+        
+    </div>
 
     <div class="level-item has-text-centered">
       <div>
         <a class="navbar-item">
-          <div class="countdown"></div>  
+          <div class="countdown"></div>
         </a>
         <!-- This div holds the hourglass model-->
         <div id="scene-container" style="height: 300px; width: 300px;">
@@ -57,14 +48,14 @@
       </div>
     </div>
   </nav>
-  <!-- Bottom section =  -->        
+  <!-- Bottom section =  -->
   <footer class="footer">
     <div class="content has-text-centered">
-      <h2 class="subtitle">High Score 9</h2>
+      <!-- <h2 class="subtitle">High Score 9</h2>
       <button id="button1" class="button">button</button>
-      <button id="button2" class="button">button</button>
+      <button id="button2" class="button">button</button> -->
     </div>
-  </footer>  
+  </footer>
   <script src="./assets/js/moment.js"></script>
   <script src="./assets/js/three.js"></script>
   <script src="./assets/js/OrbitControls.js"></script>
