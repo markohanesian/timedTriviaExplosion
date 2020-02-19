@@ -42,8 +42,8 @@ function questionDisplay() {
       //just stores the question data
       var respQues = current_question.question;
 
-      //creates element to display question text
-      var qTextDisplay = $("<p class='ques is-size-1'>").text(respQues);
+      //creates element to display question text  EDITED is-size 3
+      var qTextDisplay = $("<p class='ques is-size-3'>").text(respQues);
 
       //Display the question text
       questionDiv.append(qTextDisplay);
@@ -52,9 +52,9 @@ function questionDisplay() {
       var respAnsOne = current_question.correct_answer;
       var respAnsTwo = current_question.incorrect_answers;
 
-      //displays the answer text for correct and incorrect answer
-      var answerOneDisplay = $("<p class='button'>").text(respAnsOne);
-      var answerTwoDisplay = $("<p class='button'>").text(respAnsTwo);
+      //displays the answer text for correct and incorrect answer EDITED button is-medium is-warning
+      var answerOneDisplay = $("<p class='button is-medium is-warning'>").text(respAnsOne);
+      var answerTwoDisplay = $("<p class='button is-medium is-warning'>").text(respAnsTwo);
 
       
       questionDiv.append(answerOneDisplay);

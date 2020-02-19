@@ -8,70 +8,68 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
   <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
   <style>
-    .center {
+    /* .center {
       display: flex;
       justify-content: center;
       align-items: center;
-    }
+    } */
   </style>
 </head>
 
 <body>
   <!-- Top section = 1 column -->
   <section class="hero is-warning">
-    <div class="hero-body">
+    <div class="hero-body is-paddingless">
       <div class="container has-text-centered">
-        <h1 class="title is-1">Timed Trivia Explosion</h1>
+        <h1 class="title is-2">Timed Trivia Explosion</h1>
       </div>
     </div>
   </section>
-  <!-- Middle section = 2 columns -->        
-  <nav class="level">
-    <div class="level-item has-text-centered">
+  <!-- Middle section = 2 columns   This Holds the Start Button-->
+  <div class="columns">
+    <div class="column has-text-centered">
       <div class="container" id="start-area">
-        <h1>Timed Trivia Explosion!</h1>
-        <div class="button is-size-1" id="start-button">START
+        <!-- <h1>Timed Trivia Explosion!</h1> this repeats the title, remove -->
+        <div class="button is-size-1 is-danger" id="start-button">START
         </div>
       </div>
-        
       <!--container with quiz questions-->
       <div class="container" id="quiz-container">
-        <!-- <div class="questions is-size-1" id="question"> -->
-        </div>
-       <div class="answer-area" id="answer-area">
-       </div>
-    </div>  
-
-    <div class="level-item has-text-centered">
-      <div>
-        <a class="navbar-item">
-          <div class="countdown"></div>  
-        </a>
-        <!-- This div holds the hourglass model-->
-        <div id="scene-container" style="height: 300px; width: 300px;">
-        </div>
-        <!-- This div holds the hourglass model-->
-        <div id="spinglass" style="height: 300px; width: 300px;">
-          <img src="https://media.giphy.com/media/xFmuT64Jto3mRO4w3G/giphy.gif">
-        </div>
+        <!-- <div class="questions is-size-4" id="question"> -->
       </div>
+      <div class="answer-area" id="answer-area">
+      </div>
+      <div class="countdown is-size-3">countdown</div>
     </div>
-  </nav>
-  <!-- Bottom section =  -->        
-  <footer class="footer">
-    <div class="content has-text-centered">
-      <h2 class="subtitle">High Score 9</h2>
-      <button id="button1" class="button">button</button>
-      <button id="button2" class="button">button</button>
+
+    <div class="column has-text-centered">      
+        <div class="container">
+          <!-- This div holds the hourglass model-->
+          <div id="scene-container" style="height: 300px; width: 300px;">
+          </div>
+          <!-- This div holds the hourglass model-->
+          <div id="spinglass" style="height: 300px; width: 300px;">
+            <img src="https://media.giphy.com/media/xFmuT64Jto3mRO4w3G/giphy.gif">
+          </div>
+        </div>
+      </div>    
     </div>
-  </footer>  
-  <script src="./assets/js/moment.js"></script>
-  <script src="./assets/js/three.js"></script>
-  <script src="./assets/js/OrbitControls.js"></script>
-  <script src="./assets/js/app.js"></script>
-  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-  <script src="./assets/js/scripts.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+
+    <!-- Bottom section =  -->
+    <footer class="footer">
+      <div class="content has-text-centered">
+        <h2 class="subtitle">High Score 9</h2>
+        <button id="button1" class="button">button</button>
+        <button id="button2" class="button">button</button>
+      </div>
+    </footer>
+    <script src="./assets/js/moment.js"></script>
+    <script src="./assets/js/three.js"></script>
+    <script src="./assets/js/OrbitControls.js"></script>
+    <script src="./assets/js/app.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="./assets/js/scripts.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
 </body>
 
 </html>
