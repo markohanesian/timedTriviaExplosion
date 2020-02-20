@@ -2,24 +2,24 @@ var allQuestions = [];
 
 // pulls all 50 trivia questions from opentdb API
 function questionDisplay() {
-  var queryURL = "https://opentdb.com/api.php?amount=50&type=boolean&encode=url3986";
+  var queryURL =
+    "https://opentdb.com/api.php?amount=50&type=boolean&encode=url3986";
 
   $.ajax({
     url: queryURL,
     method: "GET"
   }).then(function(response) {
-
     allQuestions = response;
     answerCorrect = respAnsOne;
     answerWrong = respAnsTwo;
-    
+
     //loops through each question
     for (var i = 0; i < response.results.length; i++) {
-        var current_question = response.results[i];
-        
+      var current_question = response.results[i];
+
       //creates div to hold question text
       var questionDiv = $("<div class='question'>");
-      
+
       //just stores the question data
       var respQues = current_question.question;
 
@@ -38,66 +38,68 @@ function questionDisplay() {
       //then asign it to the button it belongs to
       if (respAnsOne === "'False") {
         thisOne = false;
-        thatOne = true;        
-      }
-      else {
+        thatOne = true;
+      } else {
         thisOne = true;
-        thatOne =false;
+        thatOne = false;
       }
-    
+
       //displays the answer text for correct and incorrect answer
       var answerTrue = $("<p class='button is-danger'>").text(thisOne);
       var answerFalse = $("<p class='button is-danger'>").text(thatOne);
       //appends the
       questionDiv.append(answerTrue);
       questionDiv.append(answerFalse);
-      
+
       $("#quiz-container").html(questionDiv);
       return;
     }
   });
 }
 
-
 // decodes html entities - NOT WORKING WHYYY
-$.get("https://opentdb.com/api.php?amount=50&type=boolean&encode=url3986", function (res) {
-                // console.log(res.results)
-                let questions = res.results.map(elem => {
-                    
-                    elem.question = decodeURIComponent(elem.question);
-                    elem.correct_answer = decodeURIComponent(elem.correct_answer);
-                    elem.incorrect_answers = elem.incorrect_answers.map(incorrect =>
-                        decodeURIComponent(incorrect)
-                    )
+$.get(
+  "https://opentdb.com/api.php?amount=50&type=boolean&encode=url3986",
+  function(res) {
+    // console.log(res.results)
+    let questions = res.results.map(elem => {
+      elem.question = decodeURIComponent(elem.question);
+      elem.correct_answer = decodeURIComponent(elem.correct_answer);
+      elem.incorrect_answers = elem.incorrect_answers.map(incorrect =>
+        decodeURIComponent(incorrect)
+      );
 
-                    return elem
-                })
-                alert(elem.questions)
-            })
+      return elem;
+    });
+    alert(elem.questions);
+  }
+);
 
 // on start button click, questions are displayed, timer starts, then start button disappears
 $("#start-button").on("click", function(event) {
-    event.preventDefault();
-  
-    questionDisplay();
-    startButton();
-    timerCount();
+  event.preventDefault();
+
+  questionDisplay();
+  startButton();
+  timerCount();
 });
 
 // checks if answers are correct or incorrect, adds/subtracts time on timer accordingly - not working yet
 function checkAnswers() {
-  if(allQuestions.results.correct_answer === "true" || allQuestions.results.correct_answer === "false") {
-    sec+= 5
+  if (
+    allQuestions.results.correct_answer === "true" ||
+    allQuestions.results.correct_answer === "false"
+  ) {
+    
+    sec += 5;
   } else {
-    sec-= 5
+    sec -= 5;
   }
   checkAnswers();
 }
 
 // activates buttons to display questions
 $(document).on("click", ".button", questionDisplay);
-
-
 
 //function for the moment timer
 function timerCount() {
@@ -124,8 +126,8 @@ function timerCount() {
     } else if (sec < 10 && sec.length != 2) sec = "0" + sec;
 
     $("#countdown").text(min + ":" + sec);
-    if (sec <=5 ) {
-      $("#countdown").attr("style", "color: red")
+    if (sec <= 5) {
+      $("#countdown").attr("style", "color: red");
     }
     if (min == 0 && sec == 0) clearInterval(timer);
   }, 1000);
@@ -139,17 +141,15 @@ function startButton() {
 }
 
 // not working
-function endQuiz () {
+function endQuiz() {
   if (timerCount === 0) {
-    ("#quiz-container").hide();
+    "#quiz-container".hide();
   }
-  questionDisplay()
+  questionDisplay();
 }
 
 // not working
-function highScoresDisplay () {
-  
-}
+function highScoresDisplay() {}
 
 // var WEBGL = {
 

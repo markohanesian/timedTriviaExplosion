@@ -26,7 +26,7 @@ Breakdown of tasks:
 
 Initialize repo and create structure (HTML, script, css, assets, etc.) Andrea 
 
-CSS design - research SemanticUI Mark Betsy 
+CSS framework Bulma - research framework Mark Betsy 
 
 Three.js - research functionality Mark
 
