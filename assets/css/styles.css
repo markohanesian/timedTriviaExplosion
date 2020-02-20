@@ -1,6 +1,27 @@
+.columns {
+    background-color: orange;
+    margin: 0 auto;
+  }
+
 .center {
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+
+  .box {
+      position: relative;
+      width: 200px;
+      height: 200px;
+      margin: 1px;
+      display: block;
+  }
+
+  #start-area {
+      margin-top: 40px;
+  }
+
+  .button {
+      padding: 10px;
   }
 
