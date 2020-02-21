@@ -3,7 +3,7 @@ var allQuestions = [];
 // pulls all 50 trivia questions from opentdb API
 function questionDisplay() {
   var queryURL =
-    "https://opentdb.com/api.php?amount=50&type=boolean&encode=url3986";
+    "https://opentdb.com/api.php?amount=50&type=boolean";
 
   $.ajax({
     url: queryURL,
@@ -34,7 +34,7 @@ function questionDisplay() {
       var respAnsTwo = current_question.incorrect_answers;
       var thisOne;
       var thatOne;
-      //make a vaiable that is "true" for the correct answer
+      //make a variable that is "true" for the correct answer
       //then asign it to the button it belongs to
       if (respAnsOne === "'False") {
         thisOne = false;
@@ -90,12 +90,10 @@ function checkAnswers() {
     allQuestions.results.correct_answer === "true" ||
     allQuestions.results.correct_answer === "false"
   ) {
-    
     sec += 5;
   } else {
     sec -= 5;
   }
-  checkAnswers();
 }
 
 // activates buttons to display questions
@@ -146,7 +144,34 @@ function endQuiz() {
     "#quiz-container".hide();
   }
   questionDisplay();
+  $("img").explode();
 }
+
+$("img").explodeRestore();
+
+$("img").explode({
+
+    omitLastLine: false,
+    radius: 80,
+    minRadius: 20,
+    release: true,
+    fadeTime: 300,
+    recycle: true,
+    recycleDelay: 500,
+    fill: true,
+    explodeTime: 300,
+    maxAngle: 360,
+    gravity: 0,
+    round: false,
+    groundDistance: 400,
+    ignoreCompelete: false,
+    land: true,
+    checkOutBound,
+    finish,
+    
+  });
+  
+
 
 // not working
 function highScoresDisplay() {}
