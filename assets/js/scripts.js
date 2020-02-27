@@ -48,9 +48,9 @@ function questionDisplay() {
 
       //stores the answer data
       var respAnsOne = current_question.correct_answer;
-      var respAnsTwo = current_question.incorrect_answers;
       var thisOne;
       var thatOne;
+      
       //make a variable that is "true" for the correct answer
       //then asign it to the button it belongs to
       if (respAnsOne === "'False") {
@@ -73,28 +73,6 @@ function questionDisplay() {
     }
   });
 }
-
-// decodes html entities - NOT WORKING WHYYY
-$.get(
-  "https://opentdb.com/api.php?amount=50&type=boolean&encode=url3986",
-  function(res) {
-    // console.log(res.results)
-    let questions = res.results.map(elem => {
-      console.log("before:", elem.question)
-      elem.question = decodeURIComponent(elem.question);
-      console.log("after:", elem.question)
-      elem.correct_answer = decodeURIComponent(elem.correct_answer);
-      elem.incorrect_answers = elem.incorrect_answers.map(incorrect =>
-        decodeURIComponent(incorrect)
-      );
-        console.log("after:", elem)
-      return elem;
-    });
-    
-    console.log(questions)
-    //alert(questions);
-  }
-);
 
 // on start button click, questions are displayed, timer starts, then start button disappears
 $("#start-button").on("click", function(event) {
