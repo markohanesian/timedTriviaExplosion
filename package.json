@@ -1,0 +1,30 @@
+{
+  "name": "timedtriviaexplosion",
+  "version": "1.0.0",
+  "description": "A timed trivia game of 50 true or false questions that must be answered in under a minute. Once the timer runs to zero, the animation on the right of the questions will explode and it will be game over.",
+  "main": "index.js",
+  "dependencies": {
+    "fomantic-ui": "^2.8.4",
+    "gulp": "^4.0.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arumbaua366/timedTriviaExplosion.git"
+  },
+  "keywords": [
+    "trivia",
+    "triviagame",
+    "opentdb",
+    "apigame"
+  ],
+  "author": "Andrea Rumbaua, Betsy Petering, Mark Ohanesian",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/arumbaua366/timedTriviaExplosion/issues"
+  },
+  "homepage": "https://github.com/arumbaua366/timedTriviaExplosion#readme"
+}

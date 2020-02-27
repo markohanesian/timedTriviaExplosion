@@ -9,16 +9,8 @@ function questionDisplay() {
     url: queryURL,
     method: "GET"
   }).then(function(res) {
-  //   allQuestions = response;
-  //   answerCorrect = respAnsOne;
-  //   answerWrong = respAnsTwo;
-
-
-  // $.get(
-  //   "https://opentdb.com/api.php?amount=50&type=boolean&encode=url3986",
-  //   function(res) {
-  //     // console.log(res.results)
-      let questions = res.results.map(elem => {
+  
+      var questions = res.results.map(elem => {
         elem.question = decodeURIComponent(elem.question);
         elem.correct_answer = decodeURIComponent(elem.correct_answer);
         elem.incorrect_answers = elem.incorrect_answers.map(incorrect =>
@@ -50,7 +42,7 @@ function questionDisplay() {
       var respAnsOne = current_question.correct_answer;
       var thisOne;
       var thatOne;
-      
+
       //make a variable that is "true" for the correct answer
       //then asign it to the button it belongs to
       if (respAnsOne === "'False") {
@@ -139,38 +131,13 @@ function startButton() {
 
 // not working
 function endQuiz() {
-  if (timerCount === 0) {
+  console.log(duration.seconds)
+  if (timerCount.sec === 0) {
     "#quiz-container".hide();
   }
   questionDisplay();
   $("img").explode();
 }
-
-$("img").explodeRestore();
-
-$("img").explode({
-
-    omitLastLine: false,
-    radius: 80,
-    minRadius: 20,
-    release: true,
-    fadeTime: 300,
-    recycle: true,
-    recycleDelay: 500,
-    fill: true,
-    explodeTime: 300,
-    maxAngle: 360,
-    gravity: 0,
-    round: false,
-    groundDistance: 400,
-    ignoreCompelete: false,
-    land: true,
-    checkOutBound,
-    finish,
-    
-  });
-  
-
 
 // not working
 function highScoresDisplay() {}
