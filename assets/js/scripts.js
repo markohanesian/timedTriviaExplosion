@@ -2,36 +2,31 @@ var allQuestions = [];
 
 // pulls all 50 trivia questions from opentdb API
 function questionDisplay() {
-  // var queryURL =
-  //   "https://opentdb.com/api.php?amount=50&type=boolean";
+  var queryURL =
+    "https://opentdb.com/api.php?amount=50&type=boolean&encode=url3986";
 
-  // $.ajax({
-  //   url: queryURL,
-  //   method: "GET"
-  // }).then(function(response) {
+  $.ajax({
+    url: queryURL,
+    method: "GET"
+  }).then(function(res) {
   //   allQuestions = response;
   //   answerCorrect = respAnsOne;
   //   answerWrong = respAnsTwo;
 
 
-  $.get(
-    "https://opentdb.com/api.php?amount=50&type=boolean&encode=url3986",
-    function(res) {
-      // console.log(res.results)
+  // $.get(
+  //   "https://opentdb.com/api.php?amount=50&type=boolean&encode=url3986",
+  //   function(res) {
+  //     // console.log(res.results)
       let questions = res.results.map(elem => {
-        console.log("before:", elem.question)
         elem.question = decodeURIComponent(elem.question);
-        console.log("after:", elem.question)
         elem.correct_answer = decodeURIComponent(elem.correct_answer);
         elem.incorrect_answers = elem.incorrect_answers.map(incorrect =>
           decodeURIComponent(incorrect)
         );
-          console.log("after:", elem)
         return elem;
       });
       
-      console.log(questions)
-      //alert(questions);
       var response = {}
      response.results = questions
 
