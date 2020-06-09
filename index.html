@@ -14,19 +14,14 @@
 
 <body>
   <!-- Top section = 1 column -->
-  <div class="hero is-warning">
-    <div class="hero-body">
-      <div class="container has-text-centered">
-        <h1 class="title is-2">Timed Trivia Explosion!</h1>
-        <p class="restart"><a href="index.html"><i class="fas fa-redo" aria-hidden="true"></i> Restart</a></p>
-      </div>
-    </div>
+  <div class="nav">
+    <h1 id="nav-h1">Timed Trivia Explosion!</h1>
+    <p class="restart"><a href="index.html"><i class="fas fa-redo" aria-hidden="true"></i> Restart</a></p>
   </div>
 
 
   <!-- This Holds the Start Button-->
-  <div class="columns">
-    <div class="column has-text-centered">
+    <div class="main">
       <div class="container" id="start-area">
         <div class="button is-size-1 is-danger" id="start-button">START
         </div>
@@ -40,25 +35,24 @@
       <div class="timer-text is-size-5">Timer: <span id="countdown"></span></div>
     </div>
 
-    <div class="column has-text-centered">
-      <div class="columns">
-        <!-- This div holds the animation model-->
-        <div class="column">
-          <div id="scene-container" style="height: 300px; width: 300px; margin: auto;">
-            <img src="https://thumbs.gfycat.com/BiodegradableEmotionalEarwig-size_restricted.gif" alt="">
-        </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
   <!-- Bottom section =  -->
-  <footer class="footer">
-    <div class="content has-text-centered">
-      <h5 class="project-footer">Created by Andrea, Betsy, and Mark</h2>
-
+  <footer class="page-footer">
+    <div style="width: 100%; display: table;">
+      <div style="display: table-row">
+        <div id="devs" style="width: 600px; display: table-cell;">
+          <ul> 
+            <li><b>Created by</b></li>
+            <li>Andrea Rumbua</li>
+            <li>Betsy Petering</li> 
+            <li>Mark Ohanesian</li> 
+          </ul>
+        </div>
+        <div style="display: table-cell;"> 
+          <a href="url">link text</a>
+        </div>
     </div>
   </footer>
+
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
   <script src="./assets/js/scripts.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
