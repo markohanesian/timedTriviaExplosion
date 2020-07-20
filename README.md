@@ -26,3 +26,7 @@ A fun trivia game where you must answer questions before the timer runs out
 Betsy Petering
 Andrea Rumbaua
 Mark Ohanesian
+
+![badmath](https://img.shields.io/github/languages/top/nielsenjared/badmath)
+![GitHub release](https://img.shields.io/github/v/release/markohanesian/Burger-Logger)
+![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)
