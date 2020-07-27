@@ -27,6 +27,11 @@ Betsy Petering
 Andrea Rumbaua
 Mark Ohanesian
 
+
+## License
+
+* [MIT](https://opensource.org/licenses/MIT)
+
 ![badmath](https://img.shields.io/github/languages/top/nielsenjared/badmath)
 ![GitHub release](https://img.shields.io/github/v/release/markohanesian/Burger-Logger)
 ![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)
